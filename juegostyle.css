@@ -1,0 +1,235 @@
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ace1f1;
+    margin: 0;
+}
+
+/* Title and Timer Styling */
+h1,
+#timer {
+    color: hwb(0 38% 27%);
+    text-align: center;
+}
+.video-background {
+    position: fixed; /* Fija el video en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Oculta cualquier contenido fuera del video */
+    z-index: -1; /* Asegura que el video esté detrás del contenido */
+}
+.video-background video {
+    position: absolute; /* Posiciona el video de forma absoluta dentro del contenedor */
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que el video cubra todo el área del contenedor */
+    transform: translate(-50%, -50%); /* Centra el video */
+}
+/* Background Video Styling */
+video#background {
+    position: sticky;
+    top: 100;
+    left: 100;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: -1;
+    overflow: visible;
+    max-width: 100%;
+    margin-top: auto;
+}
+.winner-gif {
+    max-width: 100%; /* Asegura que el GIF no exceda el ancho del modal */
+    height: auto; /* Mantiene la proporción del GIF */
+    margin: 20px 0; /* Espaciado superior e inferior */
+}
+.lost-gif {
+    max-width: 100%; /* Asegura que el GIF no exceda el ancho del modal */
+    height: auto; /* Mantiene la proporción del GIF */
+    margin: 20px 0; /* Espaciado superior e inferior */
+}
+/* Overlay Styling */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Game Container Styling */
+.game-container {
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Timer Styling */
+#timer {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+/* Game Board Styling */
+#gameBoard {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Card Styling */
+.card {
+    width: 100px;
+    height: 150px;
+    background-color: rgb(190, 166, 166);
+    border: 2px solid lightgrey;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transform: perspective(1000px);
+    transition: transform 0.6s;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.card.flipped img {
+    display: block;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fija la posición */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    z-index: 1000; 
+}
+
+.modal-content {
+    background: #fff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Centra el texto */
+    max-width: 500px; /* Máximo ancho del modal */
+    margin: auto; /* Centra horizontalmente */
+}
+
+.modal-header {
+    color: white;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.modal img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.modal button.close {
+    position: absolute;
+     top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.modal button.close:hover {
+    color: black;
+}
+
+/* Buttons Container Styling */
+.buttons-container {
+    margin-top: 20px;
+}
+
+/* Button Styling */
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    background-color: darkred;
+    color: white;
+}
+
+button:hover {
+    background-color: darkgrey;
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #gameBoard {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+        width: 80px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    #gameBoard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+        width: 60px;
+        height: 90px;
+    }
+}
